@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plotly Line Chart</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+<div id="plotly-chart" style="width: 100%; height: 400px;"></div>
+
+<script>
+    // Sample data
+    var dates = Array.from({length: 100}, (_, i) => new Date(2018, 10, 27, 0, 0).getTime() + i * 86400000); // 100 days from 27/10/2018
+    var pH1 = Array.from({length: 100}, () => Math.random() * 2); // Random values for pH1
+    var pH2 = Array.from({length: 100}, () => Math.random() * 2 + 2); // Random values for pH2
+    var pH3 = Array.from({length: 100}, () => Math.random() * 2 + 4); // Random values for pH3
+
+    // Create the traces
+    var trace1 = {
+        x: dates,
+        y: pH1,
+        mode: 'lines',
+        name: 'pH1',
+        line: {color: 'blue'}
+    };
+
+    var trace2 = {
+        x: dates,
+        y: pH2,
+        mode: 'lines',
+        name: 'pH2',
+        line: {color: 'green'}
+    };
+
+    var trace3 = {
+        x: dates,
+        y: pH3,
+        mode: 'lines',
+        name: 'pH3',
+        line: {color: 'lightgreen'}
+    };
+
+    // Create the layout
+    var layout = {
+        title: 'pH Levels Over Time',
+        xaxis: {
+            title: 'Date',
+            type: 'date',
+            range: [new Date(2018, 10, 27, 0, 0), new Date(2018, 11, 5, 0, 0)] // Adjust the range as needed
+        },
+        yaxis: {
+            title: 'pH Level',
+            range: [0, 6] // Adjust the range as needed
+        },
+        legend: {
+            orientation: 'h'
+        }
+    };
+
+    // Create the figure
+    var data = [trace1, trace2, trace3];
+
+    // Plot the chart
+    Plotly.newPlot('plotly-chart', data, layout);
+</script>
+
+</body>
+</html>

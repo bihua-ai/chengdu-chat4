@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom cursor for resizing */
+.cursor-col-resize {
+  cursor: col-resize;
+}
+
+/* Prevent text selection while resizing */
+.select-none {
+  user-select: none;
+}
